@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-row>
+    <ion-col class='d-flex align-items-center justify-content-between'>
+      <a [routerLink]="['/']" routerLinkActive="router-link-active">
+        <ion-icon size='large' name="arrow-back"></ion-icon>
+      </a>
+      <h1 class='app-heading ion-padding-end'>Crimson</h1>
+    </ion-col>
+    <!-- <ion-col>
+        <ion-select interface='popover' class='border border-rounded border-danger'>
+          <ion-select-option selected value='e'>English</ion-select-option>
+          <ion-select-option value='h'>Hindi</ion-select-option>
+        </ion-select>
+      </ion-col> -->
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <ion-row class='d-flex h-100 justify-content-center'>
+    <ion-col class='align-self-center'>
+      <ion-card>
+        <ion-card-header class='d-flex flex-column justify-content-center'>
+          <ion-icon class='signin-icon' name="contact" class='align-self-center'></ion-icon>
+          <ion-text class='signin-heading align-self-center font-weight-bolder text-dark'>
+            Sign Up
+          </ion-text>
+        </ion-card-header>
+        <ion-card-content class='ion-padding-top'>
+          <form (submit)='submit()' #regForm='ngForm'>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name="person" class='ion-padding-end'></ion-icon>
+              <ion-input type='text' name='username' [(ngModel)]="user.username" required minlength='5'
+                #username='ngModel' placeholder='Username' class='ion-padding'></ion-input>
+              <span *ngIf='username.invalid && (username.dirty || username.touched)' class='error_msg'>
+                <span *ngIf='!!username.errors.required'>
+                  Enter username.
+                </span>
+                <span *ngIf='!!username.errors.minlength'>
+                  Username should be min length.
+                </span>
+              </span>
+            </ion-item>
+            <span class='error_msg'>
+              {{errorMessages['username_error']}}
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name="mail" class='ion-padding-end'></ion-icon>
+              <ion-input type='email' name='email' [(ngModel)]="user.email" required #email='ngModel'
+                pattern='([\w-\+])+(\.[\w]+)*@[\w-]+(\.[\w]+)*(\.[a-z]{2,})' placeholder='Email' class='ion-padding'>
+              </ion-input>
+              <span *ngIf='email.invalid && (email.dirty || email.touched)' class='error_msg'>
+                <span *ngIf='!!email.errors.required'>
+                  Enter Email.
+                </span>
+                <span *ngIf='!!email.errors.pattern'>
+                  Enter Proper Email Id.
+                </span>
+              </span>
+            </ion-item>
+            <span class='error_msg'>
+              {{errorMessages['email_error']}}
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name="phone-portrait" class='ion-padding-end'></ion-icon>
+              <ion-input type='tel' name='mobile' [(ngModel)]="user.mobile" required #mobile='ngModel'
+                pattern='[6-9][0-9]{9}' placeholder='Mobile' class='ion-padding'>
+              </ion-input>
+              <span *ngIf='mobile.invalid && ( mobile.dirty || mobile.touched )' class='error_msg'>
+                <span *ngIf='!!mobile.errors.required'>
+                  Enter Mobile.
+                </span>
+                <span *ngIf='!!mobile.errors.pattern'>
+                  Enter valid Mobile Number.
+                </span>
+              </span>
+            </ion-item>
+            <span class='error_msg'>
+              {{errorMessages['mobile_error']}}
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name="lock" class='ion-padding-end'></ion-icon>
+              <ion-input type='password' name='password' [(ngModel)]="user.password" required
+                pattern='^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$' #password='ngModel'
+                placeholder='Password' class='ion-padding'></ion-input>
+            </ion-item>
+            <span *ngIf='password.invalid && (password.dirty || password.touched)' class='error_msg'>
+              <span *ngIf='!!password.errors.required'>
+                Enter Password
+              </span>
+              <span *ngIf='!!password.errors.pattern'>
+                Min one small, capital,numeric and special character.
+              </span>
+            </span>
+            <ion-button [disabled]='!regForm.valid' type='submit' expand='full' shape='round'
+              class='text-center signIn-button'>
+              Sign Up
+            </ion-button>
+          </form>
+
+          <ion-item class='ion-padding'>
+            <ion-text>Are you a memeber? &nbsp;<a [routerLink]="['/']" routerLinkActive="router-link-active"
+                class=''>Login Here</a></ion-text>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
