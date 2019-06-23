@@ -26,7 +26,7 @@
           </ion-text>
         </ion-card-header>
         <ion-card-content class='ion-padding-top'>
-          <form (submit)='submit()' #regForm='ngForm'>
+          <form (submit)='submit(regForm)' #regForm='ngForm'>
             <ion-item class='border border-rounded ion-margin-bottom'>
               <ion-icon name="person" class='ion-padding-end'></ion-icon>
               <ion-input type='text' name='username' [(ngModel)]="user.username" required minlength='5'

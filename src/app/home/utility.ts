@@ -1,2 +1,2 @@
-export const localURL = 'http://localhost:8084/api/';
-export const webURL = 'http://crimsontrading.in/api/';
+// export const URL = 'http://localhost:8084/api/';
+export const URL = 'http://crimsontrading.in/api/';

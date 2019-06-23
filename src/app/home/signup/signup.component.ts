@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
-import { SignupService } from '../services/signup-service.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { NgForOf } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -14,16 +16,16 @@ export class SignupComponent implements OnInit {
   role = 'ROLE_USER';
   errorMessages = {};
 
-  constructor(private signupService: SignupService, private router: Router ) {
+  constructor(private userService: UserService, private router: Router ) {
     this.user = new User();
   }
 
   ngOnInit() {}
 
-  submit() {
-    this.signupService.addUser(this.user).subscribe(
+  submit(ngFrom: NgForm) {
+    this.userService.addUser(this.user).subscribe(
       (data) => {
-        this.user = new User();
+        ngFrom.reset();
         this.router.navigate(['/']);
       },
       (error) => {
