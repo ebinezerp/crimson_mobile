@@ -1,0 +1,49 @@
+<ion-split-pane>
+  <ion-menu contentId='main' side="start" menuId="first">
+    <ion-header>
+      <ion-toolbar>
+        <div class='d-flex flex-row align-items-center justify-content-start'>
+          <ion-icon size='large' class='ion-padding-start ion-padding-end' name="contact"></ion-icon>
+          <h1 class='align-self-center' *ngIf="user">Hello {{user.username}}</h1>
+        </div>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide='false'>
+          <ion-item>
+            <ion-icon name="home" class='ion-padding-end'></ion-icon>
+            <a [routerLink]="['/userhome/main']" routerLinkActive="router-link-active">
+              Home
+            </a>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="clipboard" class='ion-padding-end'></ion-icon>
+            <a [routerLink]="['/userhome/orders']" routerLinkActive="router-link-active">
+              Your Orders
+            </a>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="person" class='ion-padding-end'></ion-icon>
+            <a [routerLink]="['/userhome/orders']" routerLinkActive="router-link-active">
+              Your Profile
+            </a>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="contacts" class='ion-padding-end'></ion-icon>
+            <a [routerLink]="['/userhome/orders']" routerLinkActive="router-link-active">
+              Support
+            </a>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="power" class='ion-padding-end'></ion-icon>
+            <a (click)="logout()">
+              Logout
+            </a>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id='main' main></ion-router-outlet>
+</ion-split-pane>

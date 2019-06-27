@@ -1,0 +1,39 @@
+<app-header></app-header>
+<ion-content>
+  <ion-row>
+    <ion-col class='d-flex h-100 justify-content-center'>
+      <ion-card class='align-self-center d-flex flex-column justify-content-center'>
+        <ion-card-header>
+          <ion-card-title class='text-center ion-padding'>{{product.productName}}</ion-card-title>
+          <ion-item class='w-80 d-flex justify-content-center'>
+            <ion-img *ngIf="product" src='{{imageURL+ product.id}}.jpg'></ion-img>
+          </ion-item>
+        </ion-card-header>
+        <ion-card-content class='ion-margin-top'>
+          <ion-item>
+            <ion-title>Description</ion-title>
+          </ion-item>
+          <ion-item class='ion-padding-start'>
+            <ion-text>{{product.productDescription}}</ion-text>
+          </ion-item>
+          <ion-item-group class="ion-padding d-flex flex-row justify-content-around">
+            <ion-item class='ion-padding-right'>
+              <ion-text>{{product.price | currency:"&#8377;"}}</ion-text>
+            </ion-item>
+            <ion-item class='d-flex w-35 flex-row justify-content-center ion-padding-left border rounded border-success'>
+              <ion-icon name="add-circle"></ion-icon>
+              <ion-input class='text-center' [(ngModel)]="quantity" name='quantity'></ion-input>
+              <ion-icon name="remove-circle"></ion-icon>
+            </ion-item>
+          </ion-item-group>
+          <ion-buttons class='d-flex justify-content-around flex-row border rounded'>
+            <ion-button>Add to Cart</ion-button>
+            <ion-button>Continue Shopping</ion-button>
+          </ion-buttons>
+
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<app-footer></app-footer>

@@ -10,15 +10,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
+import { UserhomeModule } from './userhome/userhome.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    HttpClientModule, HomePageModule],
+    HttpClientModule, HomePageModule, UserhomeModule],
   providers: [
     StatusBar,
     SplashScreen,

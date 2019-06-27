@@ -1,0 +1,22 @@
+<ion-footer>
+  <ion-row class='d-flex flex-row justify-content-around'>
+    <ion-col size='3'>
+      <div (click)="backPage()">
+        <ion-icon name="arrow-dropleft-circle" class='ion-padding-end'></ion-icon>
+        <ion-text>Back</ion-text>
+      </div>
+    </ion-col>
+    <ion-col size='3'>
+      <div [routerLink]="['/userhome/main']" routerLinkActive="router-link-active">
+        <ion-icon name="home" class='ion-padding-end'></ion-icon>
+        <ion-text>Home</ion-text>
+      </div>
+    </ion-col>
+    <ion-col size='3'>
+      <div [routerLink]="['/userhome/profile']" routerLinkActive="router-link-active">
+        <ion-icon name="person" class='ion-padding-end'></ion-icon>
+        <ion-text>Account</ion-text>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-footer>

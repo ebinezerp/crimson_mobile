@@ -1,7 +1,10 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "blank",
+  "appId": "app.crimson.trading",
+  "appName": "crimson",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "www"
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": true
+  }
 }

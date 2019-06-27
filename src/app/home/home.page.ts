@@ -5,6 +5,8 @@ import {
   UserService
 } from './services/user.service';
 import { AlertController } from '@ionic/angular';
+import { async } from 'q';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,18 +20,24 @@ export class HomePage {
 
   eventEmitter = new EventEmitter<any>();
 
-  constructor(private userService: UserService, public alertController: AlertController) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    public alertController: AlertController) {
+    }
+
 
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
-      buttons: ['OK']
+      subHeader: 'Invalid Credentials',
+      message: 'Enter Valid Credentials',
+      buttons: ['OK'],
+      cssClass: 'alertCss'
     });
-
     await alert.present();
   }
+
 
 
   submit() {
@@ -37,12 +45,12 @@ export class HomePage {
     this.userService.login(this.email, this.password).subscribe(
       (data) => {
         console.log(data);
+        this.userService.setUser(data);
+        this.router.navigate(['userhome/main']);
       },
       (error) => {
-        console.log(error);
-        if (error.status === '406') {
-          
-        }
+       console.log(error);
+       this.presentAlert();
       }
     )
   }

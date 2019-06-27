@@ -31,15 +31,15 @@
               <ion-icon name="person" class='ion-padding-end'></ion-icon>
               <ion-input type='text' name='username' [(ngModel)]="user.username" required minlength='5'
                 #username='ngModel' placeholder='Username' class='ion-padding'></ion-input>
-              <span *ngIf='username.invalid && (username.dirty || username.touched)' class='error_msg'>
-                <span *ngIf='!!username.errors.required'>
-                  Enter username.
-                </span>
-                <span *ngIf='!!username.errors.minlength'>
-                  Username should be min length.
-                </span>
-              </span>
             </ion-item>
+            <span *ngIf='username.invalid && (username.dirty || username.touched)' class='error_msg'>
+              <span *ngIf='!!username.errors.required'>
+                Enter username.
+              </span>
+              <span *ngIf='!!username.errors.minlength'>
+                Username should be min length.
+              </span>
+            </span>
             <span class='error_msg'>
               {{errorMessages['username_error']}}
             </span>
@@ -48,15 +48,15 @@
               <ion-input type='email' name='email' [(ngModel)]="user.email" required #email='ngModel'
                 pattern='([\w-\+])+(\.[\w]+)*@[\w-]+(\.[\w]+)*(\.[a-z]{2,})' placeholder='Email' class='ion-padding'>
               </ion-input>
-              <span *ngIf='email.invalid && (email.dirty || email.touched)' class='error_msg'>
-                <span *ngIf='!!email.errors.required'>
-                  Enter Email.
-                </span>
-                <span *ngIf='!!email.errors.pattern'>
-                  Enter Proper Email Id.
-                </span>
-              </span>
             </ion-item>
+            <span *ngIf='email.invalid && (email.dirty || email.touched)' class='error_msg'>
+              <span *ngIf='!!email.errors.required'>
+                Enter Email.
+              </span>
+              <span *ngIf='!!email.errors.pattern'>
+                Enter Proper Email Id.
+              </span>
+            </span>
             <span class='error_msg'>
               {{errorMessages['email_error']}}
             </span>
@@ -65,15 +65,15 @@
               <ion-input type='tel' name='mobile' [(ngModel)]="user.mobile" required #mobile='ngModel'
                 pattern='[6-9][0-9]{9}' placeholder='Mobile' class='ion-padding'>
               </ion-input>
-              <span *ngIf='mobile.invalid && ( mobile.dirty || mobile.touched )' class='error_msg'>
-                <span *ngIf='!!mobile.errors.required'>
-                  Enter Mobile.
-                </span>
-                <span *ngIf='!!mobile.errors.pattern'>
-                  Enter valid Mobile Number.
-                </span>
-              </span>
             </ion-item>
+            <span *ngIf='mobile.invalid && ( mobile.dirty || mobile.touched )' class='error_msg'>
+              <span *ngIf='!!mobile.errors.required'>
+                Enter Mobile.
+              </span>
+              <span *ngIf='!!mobile.errors.pattern'>
+                Enter valid Mobile Number.
+              </span>
+            </span>
             <span class='error_msg'>
               {{errorMessages['mobile_error']}}
             </span>

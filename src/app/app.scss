@@ -5,8 +5,12 @@
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
 
+ion-header{
+    background-color: #ff3c20;
+}
+
 .app-heading{
-    color:#ff3c20;
+    color:white;
 }
 
 ion-button{
@@ -17,10 +21,17 @@ a{
     --ion-color-primary: #ff3c20;
 }
 
+
 ion-item{
     border-radius: 10px;
 }
 
 p{
     font-size: 20px;
+}
+
+.alertCss{
+    button{
+        color:#ff3c20;
+    };
 }
