@@ -5,3 +5,14 @@ ion-toolbar > div > h1{
     margin-top:10px;
     color: white;
 }
+ion-item{
+    --background: #ff3c20;
+    --ion-item-background: #ff3c20;
+    --ion-background-color:  #ff3c20;
+}
+
+ion-text{
+    --color:white;
+    --ion-item-color: white;
+    --ion-text-color: white;
+}

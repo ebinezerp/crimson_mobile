@@ -3,29 +3,7 @@
 <ion-content>
   <div *ngIf="products">
     <ion-item-group *ngFor="let product of products">
-      <ion-item>
-        <ion-card [routerLink]="['/userhome/product',product.id]"  class='d-flex justify-content-center'>
-          <ion-row>
-            <ion-col size='4'>
-              <ion-item>
-                <ion-img src="{{ imageUrl + product.id }}.jpg"></ion-img>
-              </ion-item>
-            </ion-col>
-            <ion-col size='8'>
-              <div class='d-flex flex-column justify-content-around'>
-                <div class='ion-padding-top ion-padding-bottom'>
-                  <ion-text>{{product.productName}}</ion-text>
-                </div>
-                <div class='d-flex flex-row justify-content-between'>
-                  <ion-text>{{product.price | currency:"&#8377;"}}</ion-text>
-                  <ion-button>Order</ion-button>
-                </div>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-card>
-      </ion-item>
+      <app-mainpageproduct [product]="product"></app-mainpageproduct>
     </ion-item-group>
   </div>
 </ion-content>
-

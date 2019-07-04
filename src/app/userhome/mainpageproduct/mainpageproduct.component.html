@@ -1,0 +1,28 @@
+<ion-item>
+  <ion-card class='d-flex justify-content-center'>
+    <ion-row>
+      <ion-col [routerLink]="['/userhome/product',product.id]" size='4'>
+        <ion-item>
+          <ion-img src="{{ imageUrl + product.id }}.jpg"></ion-img>
+        </ion-item>
+      </ion-col>
+      <ion-col size='8'>
+        <div class='d-flex flex-column justify-content-around'>
+          <div [routerLink]="['/userhome/product',product.id]" class='ion-padding-top ion-padding-bottom'>
+            <ion-text>{{product.productName}}</ion-text>
+          </div>
+          <div class='d-flex flex-row justify-content-between'>
+            <ion-text>{{product.price | currency:"&#8377;"}}</ion-text>
+            <ion-button *ngIf="!product.isAddedToCart" (click)='addToCart(product.id)'>Add to Cart</ion-button>
+            <ion-item *ngIf="product.isAddedToCart"
+              class='d-flex w-35 flex-row justify-content-center ion-padding-left border rounded border-success'>
+              <ion-icon (click)='addToCart()' name="add-circle"></ion-icon>
+              <ion-input class='text-center' type='number' [(ngModel)]="cartItem.quantity" name='quantity'></ion-input>
+              <ion-icon (click)='removeFromCart()' name="remove-circle"></ion-icon>
+            </ion-item>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-item>

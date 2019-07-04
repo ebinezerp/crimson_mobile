@@ -1,35 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Product } from '../../model/product';
-import { ProductService } from '../../services/product.service';
-import { imageURL } from '../../utility/utility';
-import { Location } from '@angular/common';
-import { CartService } from 'src/app/services/cart.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from 'src/app/model/product';
 import { Cartitem } from 'src/app/model/cartitem';
+import { imageURL } from 'src/app/utility/utility';
+import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 import { CartItemService } from 'src/app/services/cart-item.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss'],
+  selector: 'app-mainpageproduct',
+  templateUrl: './mainpageproduct.component.html',
+  styleUrls: ['./mainpageproduct.component.scss'],
 })
-export class ProductComponent implements OnInit {
+export class MainpageproductComponent implements OnInit {
 
-  product: Product;
-  imageURL = imageURL;
-  quantity: number = 1;
+  @Input() product: Product;
+  imageUrl: string;
+  private cartItems: Cartitem[];
   cartItem: Cartitem;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
     private productService: ProductService,
-    private location: Location,
+    private userService: UserService,
+    private router: Router,
     private cartService: CartService,
-    private cartItemService: CartItemService) { }
+    private cartItemService: CartItemService
+  ) {
+    this.imageUrl = imageURL;
+  }
 
   ngOnInit() {
-    const id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'), 10);
-    this.product = this.productService.getProduct(id);
     this.cartService.getCart().subscribe(
       (cart) => {
            console.log('executing');
@@ -41,7 +42,6 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart() {
-    console.log('added to card');
     let cartItem: Cartitem = this.cartService.getCartItem(this.product.id);
     if (cartItem === undefined) {
         cartItem = this.cartItemService.createCartItem(this.product.id);
@@ -49,9 +49,6 @@ export class ProductComponent implements OnInit {
       this.cartItemService.updateCartItem(this.cartItem, 1);
     }
     this.cartService.addItemToCart(cartItem);
-  }
-
-  removeFromCart() {
   }
 
   assignCartItem(cart): Promise<void> {
@@ -62,6 +59,9 @@ export class ProductComponent implements OnInit {
         }
      });
     });
+  }
+
+  removeFromCart() {
   }
 
 }

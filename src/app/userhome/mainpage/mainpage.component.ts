@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../services/product.service';
-import { Product } from '../model/product';
-import { imageURL } from 'src/app/home/utility';
-import { UserService } from 'src/app/home/services/user.service';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../model/product';
+import { imageURL } from 'src/app/utility/utility';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
+import { Cartitem } from 'src/app/model/cartitem';
+import { CartItemService } from 'src/app/services/cart-item.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-mainpage',
@@ -13,15 +17,15 @@ import { Router } from '@angular/router';
 export class MainpageComponent implements OnInit {
 
   products: Product[];
-  imageUrl: string;
+  
 
   constructor(
     private productService: ProductService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService,
+    private cartItemService: CartItemService
     ) {
-    this.imageUrl = imageURL;
-    console.log('main page const');
   }
 
   ngOnInit() {
@@ -35,5 +39,6 @@ export class MainpageComponent implements OnInit {
 
   ngOnDestory() {
   }
+
 
 }

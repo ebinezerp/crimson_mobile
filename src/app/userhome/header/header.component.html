@@ -1,9 +1,13 @@
 <ion-header>
-  <ion-toolbar class='d-flex flex-row justify-content-between'>
-    <ion-buttons slot='start'>
+  <ion-toolbar class='d-flex flex-row justify-content-center'>
+    <ion-buttons size='3' slot='start'>
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title class='text-right app-heading'>Crimson</ion-title>
+    <ion-item class='header-item d-flex flex-row justify-content-between'>
+      <ion-title size='3' class='text-right app-heading'>Crimson</ion-title>
+      <ion-icon size='large' name="cart"></ion-icon>
+      <ion-text class='cartquanity' class='ion-padding'>{{cart.quantity}}</ion-text>
+    </ion-item>
   </ion-toolbar>
   <ion-item class='ion-padding'>
     <ion-img src='assets/images/banner.png'></ion-img>

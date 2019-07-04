@@ -20,15 +20,16 @@
             <ion-item class='ion-padding-right'>
               <ion-text>{{product.price | currency:"&#8377;"}}</ion-text>
             </ion-item>
-            <ion-item class='d-flex w-35 flex-row justify-content-center ion-padding-left border rounded border-success'>
-              <ion-icon name="add-circle"></ion-icon>
-              <ion-input class='text-center' [(ngModel)]="quantity" name='quantity'></ion-input>
-              <ion-icon name="remove-circle"></ion-icon>
-            </ion-item>
+            <ion-item *ngIf="product.isAddedToCart"
+            class='d-flex w-35 flex-row justify-content-center ion-padding-left border rounded border-success'>
+            <ion-icon (click)='addToCart()' name="add-circle"></ion-icon>
+            <ion-input class='text-center' type='number' [(ngModel)]="cartItem.quantity" name='quantity'></ion-input>
+            <ion-icon (click)='removeFromCart()' name="remove-circle"></ion-icon>
+          </ion-item>
           </ion-item-group>
           <ion-buttons class='d-flex justify-content-around flex-row border rounded'>
-            <ion-button>Add to Cart</ion-button>
-            <ion-button>Continue Shopping</ion-button>
+            <ion-button *ngIf="!product.isAddedToCart" (click)='addToCart()'>Add to Cart</ion-button>
+            <ion-button [routerLink]="['/userhome/main']" routerLinkActive="router-link-active" >Continue Shopping</ion-button>
           </ion-buttons>
 
         </ion-card-content>

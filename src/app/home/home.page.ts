@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import {
   UserService
-} from './services/user.service';
+} from '../services/user.service';
 import { AlertController } from '@ionic/angular';
 import { async } from 'q';
 import { Router } from '@angular/router';

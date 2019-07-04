@@ -9,6 +9,7 @@ import { UserhomeRoutingModule } from './userhome-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import { ProductComponent } from './product/product.component';
 import { HeaderComponent } from './header/header.component';
+import { MainpageproductComponent } from './mainpageproduct/mainpageproduct.component';
 
 @NgModule({
   declarations: [
@@ -16,21 +17,23 @@ import { HeaderComponent } from './header/header.component';
     MainmenuComponent,
     FooterComponent,
     ProductComponent,
-    HeaderComponent
+    HeaderComponent,
+    MainpageproductComponent
   ],
  exports: [
   MainpageComponent,
   MainmenuComponent,
   FooterComponent,
   ProductComponent,
-  HeaderComponent
+  HeaderComponent,
+  MainpageproductComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     RouterModule,
-    UserhomeRoutingModule
+    UserhomeRoutingModule,
   ]
 })
 export class UserhomeModule { }

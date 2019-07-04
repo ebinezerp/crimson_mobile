@@ -1,3 +1,5 @@
+import { Cart } from './cart';
+
 export class User {
     userId: number;
     username: string;
@@ -6,4 +8,5 @@ export class User {
     password: string;
     role: string = 'ROLE_USER';
     isActive: boolean = true;
+    cart: Cart;
 }
