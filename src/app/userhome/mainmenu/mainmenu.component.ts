@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class MainmenuComponent implements OnInit {
 
   user: User;
-  cartQuantity: number;
 
   constructor(private userService: UserService, private router: Router ) {
     console.log('main menu const');
@@ -20,7 +19,6 @@ export class MainmenuComponent implements OnInit {
   ngOnInit() {
     if (this.userService.getUser() != null) {
       this.user = this.userService.getUser();
-      this.cartQuantity = this.user.cart.quantity;
     } else {
        this.router.navigate(['/']).then(
         () =>  window.location.reload()

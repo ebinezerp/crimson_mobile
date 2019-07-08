@@ -17,7 +17,6 @@ import { Observable } from 'rxjs';
 export class MainpageComponent implements OnInit {
 
   products: Product[];
-  
 
   constructor(
     private productService: ProductService,

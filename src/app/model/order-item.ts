@@ -1,9 +1,9 @@
 import { Product } from './product';
 
-export class Cartitem {
-    cartItemId: number;
-    product: Product;
+export class OrderItem {
+    id: number;
     quantity: number;
     unitPrice: number;
     totalPrice: number;
+    product: Product;
 }

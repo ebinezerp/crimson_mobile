@@ -1,0 +1,23 @@
+<app-header></app-header>
+<ion-content>
+  <div *ngIf="cartItems">
+    <ion-item-group *ngFor="let cartItem of cartItems">
+      <app-cartitem [cartItem]='cartItem'></app-cartitem>
+    </ion-item-group>
+    <ion-item-group class='d-flex flex-row justify-content-between ion-padding'>
+      <ion-item>
+        <ion-text>Total Amouunt</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text>{{totalAmount | currency: "&#8377;"}}</ion-text>
+      </ion-item>
+    </ion-item-group>
+    <ion-item class='d-flex justify-content-around ion-padding'>
+      <ion-button [routerLink]="['/userhome/main']" routerLinkActive="router-link-active" class='ion-padding-end'>
+        Countinue Shopping</ion-button>
+      <ion-button [routerLink]="['/userhome/checkout']" routerLinkActive="router-link-active" class='ion-padding-end'>
+        Checkout</ion-button>
+    </ion-item>
+  </div>
+</ion-content>
+<app-footer></app-footer>

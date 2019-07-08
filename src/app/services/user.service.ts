@@ -14,7 +14,14 @@ export class UserService {
   private loginMail: string;
 
   public setUser(user: User): void {
+    if (user.cart == null) {
+      user.cart = new Cart();
+      user.cart.quantity = 0;
+      user.cart.cartItems = [];
+      user.cart.totalAmount = 0;
+    }
     this.user = user;
+    console.log(this.user.cart);
   }
 
   public getUser(): User {

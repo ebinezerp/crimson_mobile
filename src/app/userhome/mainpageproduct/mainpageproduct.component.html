@@ -13,11 +13,11 @@
           </div>
           <div class='d-flex flex-row justify-content-between'>
             <ion-text>{{product.price | currency:"&#8377;"}}</ion-text>
-            <ion-button *ngIf="!product.isAddedToCart" (click)='addToCart(product.id)'>Add to Cart</ion-button>
-            <ion-item *ngIf="product.isAddedToCart"
+            <ion-button *ngIf="!isAddedToCart" (click)='addToCart(product.id)'>Add to Cart</ion-button>
+            <ion-item *ngIf="isAddedToCart"
               class='d-flex w-35 flex-row justify-content-center ion-padding-left border rounded border-success'>
               <ion-icon (click)='addToCart()' name="add-circle"></ion-icon>
-              <ion-input class='text-center' type='number' [(ngModel)]="cartItem.quantity" name='quantity'></ion-input>
+              <ion-input class='text-center' type='number' disabled [(ngModel)]="cartItem.quantity" name='quantity'></ion-input>
               <ion-icon (click)='removeFromCart()' name="remove-circle"></ion-icon>
             </ion-item>
           </div>

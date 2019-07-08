@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { CartService } from 'src/app/services/cart.service';
 import { Cart } from 'src/app/model/cart';
+import { UserService } from '../../services/user.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -20,9 +20,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.cartService.getCart().subscribe(
       (cart) => {
-        this.cart = cart;
+           this.cart = cart;
       }
-    )
+    );
   }
 
 }

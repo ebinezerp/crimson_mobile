@@ -5,8 +5,11 @@
     </ion-buttons>
     <ion-item class='header-item d-flex flex-row justify-content-between'>
       <ion-title size='3' class='text-right app-heading'>Crimson</ion-title>
-      <ion-icon size='large' name="cart"></ion-icon>
-      <ion-text class='cartquanity' class='ion-padding'>{{cart.quantity}}</ion-text>
+      <div [routerLink]="['/userhome/cart']" routerLinkActive="router-link-active"
+      class='d-flex flex-row justify-content-between align-items-center'>
+        <ion-icon size='large' name="cart"></ion-icon>
+        <ion-text class='cartquanity' class='ion-padding'>{{cart.quantity}}</ion-text>
+      </div>
     </ion-item>
   </ion-toolbar>
   <ion-item class='ion-padding'>

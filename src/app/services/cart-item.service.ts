@@ -10,23 +10,24 @@ import { CartService } from './cart.service';
 export class CartItemService {
 
   constructor(
-    private productService: ProductService,
-    private cartService: CartService) { }
+    private productService: ProductService) { }
 
   createCartItem(productId: number) {
     const product: Product = this.productService.getProduct(productId);
-    product.isAddedToCart = true;
     const cartItem: Cartitem = new Cartitem();
     cartItem.product = product;
     cartItem.quantity = 1;
     cartItem.unitPrice = product.price;
-    cartItem.totalAmount = cartItem.quantity * product.price;
+    cartItem.totalPrice = cartItem.quantity * product.price;
     return cartItem;
   }
 
   updateCartItem(cartItem: Cartitem, quantity: number) {
     cartItem.quantity = cartItem.quantity + quantity;
-    cartItem.totalAmount = cartItem.quantity * cartItem.unitPrice;
-    console.log(cartItem);
+    cartItem.totalPrice = cartItem.quantity * cartItem.unitPrice;
+  }
+
+  deleteCartItem(productId: number) {
+    const product: Product = this.productService.getProduct(productId);
   }
 }

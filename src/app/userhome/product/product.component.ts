@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { CartService } from 'src/app/services/cart.service';
 import { Cartitem } from 'src/app/model/cartitem';
 import { CartItemService } from 'src/app/services/cart-item.service';
+import { Cart } from 'src/app/model/cart';
 
 @Component({
   selector: 'app-product',
@@ -19,6 +20,7 @@ export class ProductComponent implements OnInit {
   imageURL = imageURL;
   quantity: number = 1;
   cartItem: Cartitem;
+  isAddedToCart: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -32,36 +34,34 @@ export class ProductComponent implements OnInit {
     this.product = this.productService.getProduct(id);
     this.cartService.getCart().subscribe(
       (cart) => {
-           console.log('executing');
-           this.assignCartItem(cart).then(
-             () => console.log(this.cartItem.quantity)
-           );
+        for (const cartItem of cart.cartItems) {
+          if (cartItem.product.id === this.product.id) {
+            this.cartItem = cartItem;
+            this.isAddedToCart = true;
+            break;
+          } else {
+            this.isAddedToCart = false;
+          }
+        }
       }
     );
   }
 
   addToCart() {
-    console.log('added to card');
-    let cartItem: Cartitem = this.cartService.getCartItem(this.product.id);
-    if (cartItem === undefined) {
-        cartItem = this.cartItemService.createCartItem(this.product.id);
+    if (this.cartItem === undefined) {
+      const cartItem = this.cartItemService.createCartItem(this.product.id);
+      this.cartService.addNewItemToCart(cartItem);
     } else {
-      this.cartItemService.updateCartItem(this.cartItem, 1);
+      this.cartService.increaseExistingItemInCart(this.cartItem);
     }
-    this.cartService.addItemToCart(cartItem);
   }
 
   removeFromCart() {
-  }
-
-  assignCartItem(cart): Promise<void> {
-    return new Promise(() => {
-      this.cartItem = cart.cartItems.find((cartItem) => {
-        if (this.product.id === cartItem.product.id) {
-          return true;
-        }
-     });
-    });
+     if (this.cartItem.quantity > 1) {
+        this.cartService.decreaseExistingItemInCart(this.cartItem);
+     } else {
+        this.cartService.removeItemFromCart(this.cartItem);
+     }
   }
 
 }

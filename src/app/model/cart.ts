@@ -5,5 +5,5 @@ export class Cart {
     cartId: number;
     totalAmount: number;
     quantity: number;
-    cartItems: Cartitem[];
+    cartItems: Cartitem[] = [];
 }

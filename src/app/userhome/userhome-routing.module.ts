@@ -4,6 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProductComponent } from './product/product.component';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   {
@@ -17,6 +21,22 @@ const routes: Routes = [
       {
         path: 'product/:id',
         component: ProductComponent
+      },
+      {
+        path: 'cart',
+        component: CartComponent
+      },
+      {
+        path: 'checkout',
+        component: CheckoutComponent
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent
+      },
+      {
+        path: 'order/:id',
+        component: OrderComponent
       }
     ]
   }

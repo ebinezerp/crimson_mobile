@@ -1,0 +1,14 @@
+<app-header></app-header>
+<ion-content>
+  <ion-row>
+    <ion-col class='d-flex flex-row justify-content-center'>
+      <ion-text> Order Id: {{order.orderId}} </ion-text>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="order">
+    <ion-item-group *ngFor="let orderItem of order.orderItems">
+      <app-order-item [orderItem]='orderItem'></app-order-item>
+    </ion-item-group>
+  </div>
+</ion-content>
+<app-footer></app-footer>

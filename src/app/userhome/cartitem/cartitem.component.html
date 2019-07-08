@@ -1,0 +1,36 @@
+<ion-item>
+  <ion-card class='d-flex justify-content-center'>
+    <ion-row>
+      <ion-col [routerLink]="['/userhome/product',cartItem.product.id]" size='4'>
+        <ion-item>
+          <ion-img src="{{ imageURL + cartItem.product.id }}.jpg"></ion-img>
+        </ion-item>
+      </ion-col>
+      <ion-col size='8'>
+        <div class='d-flex flex-column justify-content-around'>
+          <div [routerLink]="['/userhome/product',cartItem.product.id]" class='ion-padding-top ion-padding-bottom'>
+            <ion-text>{{cartItem.product.productName}}</ion-text>
+          </div>
+          <div class='d-flex flex-row justify-content-between'>
+            <ion-item>
+                <ion-text>{{cartItem.product.price | currency:"&#8377;"}}</ion-text>
+            </ion-item>
+            <ion-item
+              class='d-flex w-35 flex-row justify-content-center ion-padding-left border rounded border-success'>
+              <ion-icon (click)='addToCart()' name="add-circle"></ion-icon>
+              <ion-input class='text-center' type='number' disabled [(ngModel)]="cartItem.quantity" name='quantity'>
+              </ion-input>
+              <ion-icon (click)='removeFromCart()' name="remove-circle"></ion-icon>
+            </ion-item>
+          </div>
+          <div>
+            <ion-item>
+              <ion-text class='ion-padding-end'>Net Amount</ion-text>
+              <ion-text>{{cartItem.totalPrice | currency:"&#8377;"}}</ion-text>
+            </ion-item>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-item>

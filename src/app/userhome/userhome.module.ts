@@ -10,6 +10,12 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductComponent } from './product/product.component';
 import { HeaderComponent } from './header/header.component';
 import { MainpageproductComponent } from './mainpageproduct/mainpageproduct.component';
+import { CartComponent } from './cart/cart.component';
+import { CartitemComponent } from './cartitem/cartitem.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderComponent } from './order/order.component';
+import { OrderItemComponent } from './order-item/order-item.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,13 @@ import { MainpageproductComponent } from './mainpageproduct/mainpageproduct.comp
     FooterComponent,
     ProductComponent,
     HeaderComponent,
-    MainpageproductComponent
+    MainpageproductComponent,
+    CartComponent,
+    CartitemComponent,
+    CheckoutComponent,
+    OrdersComponent,
+    OrderComponent,
+    OrderItemComponent
   ],
  exports: [
   MainpageComponent,
@@ -26,7 +38,13 @@ import { MainpageproductComponent } from './mainpageproduct/mainpageproduct.comp
   FooterComponent,
   ProductComponent,
   HeaderComponent,
-  MainpageproductComponent
+  MainpageproductComponent,
+  CartComponent,
+  CartitemComponent,
+  CheckoutComponent,
+  OrderComponent,
+  OrdersComponent,
+  OrderItemComponent
   ],
   imports: [
     CommonModule,

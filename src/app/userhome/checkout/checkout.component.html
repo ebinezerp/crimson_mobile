@@ -1,0 +1,122 @@
+<app-header></app-header>
+<ion-content>
+  <ion-row class='d-flex h-100 justify-content-center'>
+    <ion-col class='align-self-center'>
+      <ion-card>
+        <ion-card-header class='d-flex flex-column justify-content-center'>
+          <ion-card-title class='signin-heading align-self-center font-weight-bolder text-dark'>Billing and Delivery
+            Address</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class='ion-padding-top'>
+          <form #orderReceiverForm='ngForm' (submit)='submit(orderReceiverForm)'>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name='person' class='ion-padding-end'></ion-icon>
+              <ion-input type='text' name='firstname' [(ngModel)]='orderReciever.firstname' #firstname='ngModel'
+                required placeholder='First Name'></ion-input>
+            </ion-item>
+            <span *ngIf='firstname.invalid && (firstname.dirty || firstname.touched)' class='error_msg'>
+              <span *ngIf='!!firstname.errors.required'>
+                Enter First Name.
+              </span>
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name='person' class='ion-padding-end'></ion-icon>
+              <ion-input type='text' name='lastname' [(ngModel)]="orderReciever.lastname" #lastname='ngModel' required
+                placeholder='Last Name'></ion-input>
+            </ion-item>
+            <span *ngIf='lastname.invalid && (lastname.dirty || lastname.touched)' class='error_msg'>
+              <span *ngIf='!!lastname.errors.required'>
+                Enter Last Name.
+              </span>
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name="briefcase" class='ion-padding-end'></ion-icon>
+              <ion-input type='text' name='companyname' [(ngModel)]="orderReciever.companyName" #companyname='ngModel'
+                required placeholder='Company Name'></ion-input>
+            </ion-item>
+            <span *ngIf='companyname.invalid && (companyname.dirty || companyname.touched)' class='error_msg'>
+              <span *ngIf='!!companyname.errors.required'>
+                Enter Company Name.
+              </span>
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name='mail' class='ion-padding-end'></ion-icon>
+              <ion-input type='mail' name='mail' [(ngModel)]="orderReciever.email" #email='ngModel' required
+                placeholder='Email'>
+              </ion-input>
+            </ion-item>
+            <span *ngIf='email.invalid && (email.dirty || email.touched)' class='error_msg'>
+              <span *ngIf='!!email.errors.required'>
+                Enter Email Id.
+              </span>
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name="phone-portrait" class='ion-padding-end'></ion-icon>
+              <ion-input type='tel' name='mobile' [(ngModel)]="orderReciever.mobile" #mobile='ngModel' required
+                placeholder='Mobile'></ion-input>
+            </ion-item>
+            <span *ngIf='mobile.invalid && (mobile.dirty || mobile.touched)' class='error_msg'>
+              <span *ngIf='!!mobile.errors.required'>
+                Enter Mobile Number.
+              </span>
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name="home" class='ion-padding-end'></ion-icon>
+              <ion-input type='text' name='apartment' [(ngModel)]="orderReciever.address.apartment"
+                #apartment='ngModel' required placeholder='Apartment / House No'></ion-input>
+            </ion-item>
+            <span *ngIf='apartment.invalid && (apartment.dirty || apartment.touched)' class='error_msg'>
+              <span *ngIf='!!apartment.errors.required'>
+                Enter Apartment Number.
+              </span>
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name='disc' class='ion-padding-end'></ion-icon>
+              <ion-input type='text' name='street' [(ngModel)]="orderReciever.address.street" #street='ngModel' required
+                placeholder='Street'></ion-input>
+            </ion-item>
+            <span *ngIf='street.invalid && (street.dirty || street.touched)' class='error_msg'>
+              <span *ngIf='!!street.errors.required'>
+                Enter Street Address.
+              </span>
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name="clipboard" class='ion-padding-end'></ion-icon>
+              <ion-input type='text' name='city' [(ngModel)]="orderReciever.address.city" #city='ngModel' required
+                placeholder='City'></ion-input>
+            </ion-item>
+            <span *ngIf='city.invalid && (city.dirty || city.touched)' class='error_msg'>
+              <span *ngIf='!!city.errors.required'>
+                Enter City Name
+              </span>
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name="clipboard" class='ion-padding-end'></ion-icon>
+              <ion-input type='text' name='country' [(ngModel)]="orderReciever.address.country" #country='ngModel'
+                required placeholder='country'></ion-input>
+            </ion-item>
+            <span *ngIf='country.invalid && (country.dirty || country.touched)' class='error_msg'>
+              <span *ngIf='!!country.errors.required'>
+                Enter Country Name.
+              </span>
+            </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+              <ion-icon name="clipboard" class='ion-padding-end'></ion-icon>
+              <ion-input type='text' name='code' [(ngModel)]="orderReciever.address.code" #code='ngModel' required
+                placeholder='PIN Code'></ion-input>
+            </ion-item>
+            <span *ngIf='code.invalid && (code.dirty || code.touched)' class='error_msg'>
+              <span *ngIf='!!code.errors.required'>
+                Enter PIN Code
+              </span>
+            </span>
+            <ion-button [disabled]='!orderReceiverForm.valid' type='submit' expand='full' shape='round' class='text-center'>
+              Order
+            </ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<app-footer></app-footer>

@@ -1,0 +1,22 @@
+<ion-card class='align-self-center d-flex flex-column justify-content-center'>
+  <ion-card-header>
+    <ion-card-title>
+      {{orderItem.product.productName}}
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-img src='{{imageURL + orderItem.product.id}}.jpg'></ion-img>
+    </ion-item>
+    <ion-item-group>
+      <ion-item>
+        <ion-text class='ion-padding'>{{orderItem.unitPrice}}</ion-text>
+        <ion-text class='ion-padding'>{{orderItem.quantity}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text class='ion-padding'>Net Amount</ion-text>
+        <ion-text class='ion-padding'>{{orderItem.totalPrice}}</ion-text>
+      </ion-item>
+    </ion-item-group>
+  </ion-card-content>
+</ion-card>
