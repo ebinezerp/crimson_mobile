@@ -1,23 +1,29 @@
 <app-header></app-header>
 <ion-content>
-  <div *ngIf="cartItems">
-    <ion-item-group *ngFor="let cartItem of cartItems">
-      <app-cartitem [cartItem]='cartItem'></app-cartitem>
-    </ion-item-group>
-    <ion-item-group class='d-flex flex-row justify-content-between ion-padding'>
-      <ion-item>
-        <ion-text>Total Amouunt</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-text>{{totalAmount | currency: "&#8377;"}}</ion-text>
-      </ion-item>
-    </ion-item-group>
-    <ion-item class='d-flex justify-content-around ion-padding'>
-      <ion-button [routerLink]="['/userhome/main']" routerLinkActive="router-link-active" class='ion-padding-end'>
-        Countinue Shopping</ion-button>
-      <ion-button [routerLink]="['/userhome/checkout']" routerLinkActive="router-link-active" class='ion-padding-end'>
-        Checkout</ion-button>
-    </ion-item>
-  </div>
+  <ion-row class='d-flex h-100 justify-content-center'>
+    <ion-col class='align-self-center'>
+      <div *ngIf="cartItems.length!=0">
+        <ion-item-group *ngFor="let cartItem of cartItems">
+          <app-cartitem [cartItem]='cartItem'></app-cartitem>
+        </ion-item-group>
+        <ion-item-group class='d-flex flex-row justify-content-between ion-padding'>
+          <ion-item>
+            <ion-text>Total Amouunt</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-text>{{totalAmount | currency: "&#8377;"}}</ion-text>
+          </ion-item>
+        </ion-item-group>
+        <ion-button expand='full' shape='round' [routerLink]="['/userhome/checkout']"
+          routerLinkActive="router-link-active" class='text-center'>
+          Checkout</ion-button>
+      </div>
+      <div>
+        <ion-button expand='full' shape='round' class='text-center' [routerLink]="['/userhome/main']"
+          routerLinkActive="router-link-active">
+          Countinue Shopping</ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>
 <app-footer></app-footer>

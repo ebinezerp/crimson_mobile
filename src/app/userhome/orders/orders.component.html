@@ -1,3 +1,50 @@
-<p>
-  orders works!
-</p>
+<app-header></app-header>
+<ion-content>
+    <ion-row class='d-flex justify-content-center h-100'>
+        <ion-col class='align-self-center'>
+            <div *ngIf="orders.length!=0">
+                <ion-item-group *ngFor="let order of orders">
+                    <ion-card [routerLink]="['/userhome/order', order.orderId]">
+                        <ion-card-header>
+                            <ion-card-title class='d-flex justify-content-center'>
+                                <ion-label class='ion-padding-end'>Order Id: </ion-label>
+                                <ion-text>{{order.orderId}}</ion-text>
+                            </ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content>
+                            <ion-item-group class='d-flex justify-content-between'>
+                                <ion-item>
+                                    <ion-label class='ion-padding-end'>Quantity: </ion-label>
+                                    <ion-text>{{order.quantity}}</ion-text>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label class='ion-padding-end'>Total Amount: </ion-label>
+                                    <ion-text>{{order.totalAmount}}</ion-text>
+                                </ion-item>
+                            </ion-item-group>
+                            <ion-item-group class='d-flex justify-content-between'>
+                                <ion-item>
+                                    <ion-label class='ion-padding-end'>Delivery Status: </ion-label>
+                                    <ion-text *ngIf="order.deliveryStatus">Delivered</ion-text>
+                                    <ion-text *ngIf="!order.deliveryStatus">On Process</ion-text>
+                                </ion-item>
+                                <ion-item *ngIf="order.deliveryStatus">
+                                    <ion-label class='ion-padding-end'>Delivery Date: </ion-label>
+                                    <ion-text>{{order.deliveryDate}}</ion-text>
+                                </ion-item>
+                            </ion-item-group>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-item-group>
+            </div>
+            <div>
+                <ion-item *ngIf="orders.length==0">
+                    <ion-text class='text-center'>No Previous Orders Existed</ion-text>
+                </ion-item>
+                <ion-button expand='full' shape='round' [routerLink]="['/userhome/main']">Buy Items</ion-button>
+
+            </div>
+        </ion-col>
+    </ion-row>
+</ion-content>
+<app-footer></app-footer>

@@ -16,6 +16,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './order/order.component';
 import { OrderItemComponent } from './order-item/order-item.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SupportComponent } from './support/support.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { OrderItemComponent } from './order-item/order-item.component';
     CheckoutComponent,
     OrdersComponent,
     OrderComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    ProfileComponent,
+    SupportComponent
   ],
  exports: [
   MainpageComponent,
@@ -44,7 +48,9 @@ import { OrderItemComponent } from './order-item/order-item.component';
   CheckoutComponent,
   OrderComponent,
   OrdersComponent,
-  OrderItemComponent
+  OrderItemComponent,
+  ProfileComponent,
+  SupportComponent
   ],
   imports: [
     CommonModule,

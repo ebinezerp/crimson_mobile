@@ -44,6 +44,10 @@ export class MainpageproductComponent implements OnInit {
             this.isAddedToCart = false;
           }
         }
+
+        if (cart.cartItems.length === 0) {
+          this.isAddedToCart = false;
+        }
       }
     );
   }

@@ -10,5 +10,12 @@
       <app-order-item [orderItem]='orderItem'></app-order-item>
     </ion-item-group>
   </div>
+  <ion-item-group>
+    <ion-item class='text-center'>
+      <ion-label class='ion-padding-end'>Total Amount</ion-label>
+      <ion-text>{{order.totalAmount}}</ion-text>
+    </ion-item>
+    <ion-button expand='full' shape='round' [routerLink]="['/userhome/main']">Buy More</ion-button>
+  </ion-item-group>
 </ion-content>
 <app-footer></app-footer>

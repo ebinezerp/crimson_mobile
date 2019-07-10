@@ -13,25 +13,29 @@
         <ion-menu-toggle auto-hide='false'>
           <ion-item>
             <ion-icon name="home" class='ion-padding-end'></ion-icon>
-            <a [routerLink]="['/userhome/main']" routerLinkActive="router-link-active">
+            <a [routerLink]="['/userhome/main']" routerLinkActive="router-link-active"
+            [routerLinkActiveOptions]="{exact:true}">
               Home
             </a>
           </ion-item>
           <ion-item>
             <ion-icon name="clipboard" class='ion-padding-end'></ion-icon>
-            <a [routerLink]="['/userhome/orders']" routerLinkActive="router-link-active">
+            <a [routerLink]="['/userhome/orders']" routerLinkActive="router-link-active"
+            [routerLinkActiveOptions]="{exact:true}">
               Your Orders
             </a>
           </ion-item>
           <ion-item>
             <ion-icon name="person" class='ion-padding-end'></ion-icon>
-            <a [routerLink]="['/userhome/orders']" routerLinkActive="router-link-active">
+            <a [routerLink]="['/userhome/profile']" routerLinkActive="router-link-active"
+            [routerLinkActiveOptions]="{exact:true}">
               Your Profile
             </a>
           </ion-item>
           <ion-item>
             <ion-icon name="contacts" class='ion-padding-end'></ion-icon>
-            <a [routerLink]="['/userhome/orders']" routerLinkActive="router-link-active">
+            <a [routerLink]="['/userhome/support']" routerLinkActive="router-link-active"
+            [routerLinkActiveOptions]="{exact:true}">
               Support
             </a>
           </ion-item>

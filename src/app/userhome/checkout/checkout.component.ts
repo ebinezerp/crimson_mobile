@@ -3,6 +3,7 @@ import { OrderReciever } from 'src/app/model/order-receiver';
 import { NgForm } from '@angular/forms';
 import { OrderReceiverService } from 'src/app/services/order-receiver.service';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -15,7 +16,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private orderReceiverService: OrderReceiverService,
-    private router: Router) {
+    private router: Router,
+    private cartService: CartService) {
     this.orderReciever = new OrderReciever();
    }
 
@@ -30,6 +32,7 @@ export class CheckoutComponent implements OnInit {
                 () => orderReceiverForm.reset()
               );
           });
+        this.cartService.reset();
       }
     );
   }

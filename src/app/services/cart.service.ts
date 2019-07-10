@@ -75,9 +75,14 @@ export class CartService {
         this.cart.cartItems.splice(index, 1);
     }
     this.decreaseExistingItemInCart(cartItem);
-    // this.cart.quantity = this.cart.quantity - 1;
-    // this.cart.totalAmount = this.cart.totalAmount - cartItem.totalAmount;
-    // this.updateCart();
+  }
+
+  reset() {
+    this.cart = new Cart();
+    this.cart.cartId = 0;
+    this.cart.quantity = 0;
+    this.cart.totalAmount = 0;
+    this.cartBehaviourSubject.next(this.cart);
   }
 
 

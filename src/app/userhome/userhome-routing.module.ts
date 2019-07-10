@@ -8,6 +8,8 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './order/order.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SupportComponent } from './support/support.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,14 @@ const routes: Routes = [
       {
         path: 'order/:id',
         component: OrderComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
+      },
+      {
+        path: 'support',
+        component: SupportComponent
       }
     ]
   }

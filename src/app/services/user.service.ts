@@ -17,7 +17,6 @@ export class UserService {
     if (user.cart == null) {
       user.cart = new Cart();
       user.cart.quantity = 0;
-      user.cart.cartItems = [];
       user.cart.totalAmount = 0;
     }
     this.user = user;

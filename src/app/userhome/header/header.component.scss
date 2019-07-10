@@ -16,3 +16,16 @@ ion-text{
     --ion-item-color: white;
     --ion-text-color: white;
 }
+
+ion-img.logo{
+    width: 30px;
+    height: 30px;
+    --background: white;
+    --ion-item-background:white;
+}
+ion-item.logo-item{
+    --background: white;
+    --ion-item-background:white;
+    --ion-background-color:white;
+    padding:2px;
+}

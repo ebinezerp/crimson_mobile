@@ -5,3 +5,9 @@ ion-toolbar > div > h1{
     margin-top:10px;
     color: white;
 }
+a{
+    --ion-color-primary: black;
+}
+.router-link-active {
+    --ion-color-primary: #ff3c20;
+}
