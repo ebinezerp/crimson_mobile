@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { OrderReceiverService } from 'src/app/services/order-receiver.service';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-checkout',
@@ -17,11 +18,23 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private orderReceiverService: OrderReceiverService,
     private router: Router,
-    private cartService: CartService) {
+    private cartService: CartService,
+    private userService: UserService,
+    private orderRecieverService: OrderReceiverService) {
     this.orderReciever = new OrderReciever();
    }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const user = this.userService.getUser();
+    this.orderReceiverService.getLastOrderReceiver(user.userId).subscribe(
+      (orderReciever) => {
+        console.log(orderReciever);
+        if (orderReciever != null && orderReciever !== undefined) {
+          this.orderReciever = orderReciever;
+        }
+      }
+    );
+  }
 
   submit(orderReceiverForm: NgForm) {
     this.orderReceiverService.submit(this.orderReciever).subscribe(

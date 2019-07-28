@@ -4,6 +4,7 @@ import { URL } from '../utility/utility';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { Cart } from '../model/cart';
+import { stringify } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,32 @@ export class UserService {
   private user: User;
   private loginMail: string;
 
+
+  constructor(
+    private httpClient: HttpClient
+    ) { }
+
   public setUser(user: User): void {
     if (user.cart == null) {
       user.cart = new Cart();
       user.cart.quantity = 0;
       user.cart.totalAmount = 0;
     }
+    localStorage.setItem('user', JSON.stringify(user));
     this.user = user;
     console.log(this.user.cart);
   }
 
   public getUser(): User {
-    return this.user;
+
+    console.log(localStorage.getItem('user'));
+
+    const  user: User = JSON.parse(localStorage.getItem('user'));
+    if ( user != null ) {
+       return user;
+    } else {
+      return this.user;
+    }
   }
 
   public setLoginMail(email: string): void {
@@ -35,15 +50,13 @@ export class UserService {
     return this.loginMail;
   }
 
-  constructor(private httpClient: HttpClient) { }
-
   addUser(user: User): Observable<User> {
     return this.httpClient.post<User>(URL + 'register', user);
   }
 
   getCartCount(): number {
-    let cart: Cart = this.user.cart;
-     return cart.quantity;
+    const cart: Cart = this.user.cart;
+    return cart.quantity;
   }
 
   login(useremail: string, pass: string): Observable<User> {

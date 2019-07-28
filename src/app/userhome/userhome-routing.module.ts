@@ -10,6 +10,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './order/order.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SupportComponent } from './support/support.component';
+import { CategoryProductComponent } from './category-product/category-product.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'product/:id',
         component: ProductComponent
+      },
+      {
+        path: 'category/prod/:id',
+        component: CategoryProductComponent
       },
       {
         path: 'cart',

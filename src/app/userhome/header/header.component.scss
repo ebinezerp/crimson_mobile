@@ -5,10 +5,14 @@ ion-toolbar > div > h1{
     margin-top:10px;
     color: white;
 }
-ion-item{
-    --background: #ff3c20;
-    --ion-item-background: #ff3c20;
-    --ion-background-color:  #ff3c20;
+
+ion-menu-button {
+    --color:white;
+    fill:white;
+}
+
+ion-icon{
+    fill:white;
 }
 
 ion-text{
@@ -17,9 +21,15 @@ ion-text{
     --ion-text-color: white;
 }
 
+ion-text.cartquantity{
+    --color:white;
+    --ion-text-color: white;
+    --ion-item-color:white;
+}
+
 ion-img.logo{
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     --background: white;
     --ion-item-background:white;
 }
@@ -28,4 +38,9 @@ ion-item.logo-item{
     --ion-item-background:white;
     --ion-background-color:white;
     padding:2px;
+}
+ion-item-group.header-item > ion-item{
+    --background:  #ff3c20;
+    --ion-item-background: #ff3c20;
+    --ion-background-color: #ff3c20;
 }

@@ -31,20 +31,14 @@ export class MainmenuComponent implements OnInit {
 
   logout() {
     this.router.navigate(['/']).then(
-      () => window.location.reload()
+      () => {
+        if (localStorage.getItem('user') != null) {
+          localStorage.removeItem('user');
+        }
+        window.location.reload();
+      }
     );
 
-
-
-    // this.userService.logout().subscribe(
-    //   (data) => {
-    //     if (data === true) {
-    //       this.router.navigate(['/']).then(
-    //         () => window.location.reload()
-    //       );
-    //     }
-    //   }
-    // );
   }
 
 }

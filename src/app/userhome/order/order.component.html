@@ -15,7 +15,9 @@
       <ion-label class='ion-padding-end'>Total Amount</ion-label>
       <ion-text>{{order.totalAmount}}</ion-text>
     </ion-item>
-    <ion-button expand='full' shape='round' [routerLink]="['/userhome/main']">Buy More</ion-button>
+    <div class='d-flex justify-content-center'>
+      <ion-button shape='round' [routerLink]="['/userhome/main']">Buy More</ion-button>
+    </div>
   </ion-item-group>
 </ion-content>
 <app-footer></app-footer>

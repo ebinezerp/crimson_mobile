@@ -110,9 +110,11 @@
                 Enter PIN Code
               </span>
             </span>
-            <ion-button [disabled]='!orderReceiverForm.valid' type='submit' expand='full' shape='round' class='text-center'>
+            <div class='d-flex justify-content-center'>
+            <ion-button [disabled]='!orderReceiverForm.valid' type='submit' shape='round' class='text-center'>
               Order
             </ion-button>
+          </div>
           </form>
         </ion-card-content>
       </ion-card>

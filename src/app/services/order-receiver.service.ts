@@ -28,6 +28,11 @@ export class OrderReceiverService {
     return this.orderReciever;
   }
 
+  getLastOrderReceiver(userId: number) {
+    const params = {'userId': JSON.stringify(userId)};
+    return this.httpClient.get<OrderReciever>(URL + 'order-reciever/recent', {params});
+  }
+
   submit(orderReciever: OrderReciever): Observable<Order> {
     const params = {
       userId: stringify(this.userService.getUser().userId)

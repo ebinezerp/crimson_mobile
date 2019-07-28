@@ -14,12 +14,14 @@
             <ion-text>{{totalAmount | currency: "&#8377;"}}</ion-text>
           </ion-item>
         </ion-item-group>
-        <ion-button expand='full' shape='round' [routerLink]="['/userhome/checkout']"
-          routerLinkActive="router-link-active" class='text-center'>
-          Checkout</ion-button>
+        <div class='d-flex justify-content-center'>
+          <ion-button shape='round' [routerLink]="['/userhome/checkout']" routerLinkActive="router-link-active"
+            class='text-center'>
+            Checkout</ion-button>
+        </div>
       </div>
-      <div>
-        <ion-button expand='full' shape='round' class='text-center' [routerLink]="['/userhome/main']"
+      <div class='d-flex justify-content-center'>
+        <ion-button shape='round' class='text-center' [routerLink]="['/userhome/main']"
           routerLinkActive="router-link-active">
           Countinue Shopping</ion-button>
       </div>

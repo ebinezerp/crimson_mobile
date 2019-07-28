@@ -41,8 +41,9 @@
                 <ion-item *ngIf="orders.length==0">
                     <ion-text class='text-center'>No Previous Orders Existed</ion-text>
                 </ion-item>
-                <ion-button expand='full' shape='round' [routerLink]="['/userhome/main']">Buy Items</ion-button>
-
+                <div class='d-flex justify-content-center'>
+                    <ion-button shape='round' [routerLink]="['/userhome/main']">Buy Items</ion-button>
+                </div>
             </div>
         </ion-col>
     </ion-row>

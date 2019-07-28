@@ -18,10 +18,17 @@ export class ProductService {
   }
 
   setProducts(products: Product[]): void {
+    localStorage.setItem('products', JSON.stringify(products));
     this.products = products;
   }
 
   getProduct(id: number): Product {
+
+    if (this.products == null || this.products.length === 0 || this.products == undefined) {
+      this.products = JSON.parse(localStorage.getItem('products'));
+    }
+
+
     return this.products.find((product) => {
       if (product.id === id) {
         return true;

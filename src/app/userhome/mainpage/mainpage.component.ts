@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../model/product';
-import { imageURL } from 'src/app/utility/utility';
+import { imageURL, catImageURL } from 'src/app/utility/utility';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { Cartitem } from 'src/app/model/cartitem';
 import { CartItemService } from 'src/app/services/cart-item.service';
 import { Observable } from 'rxjs';
+import { CategoryService } from 'src/app/services/category.service';
+import { Category } from 'src/app/model/category';
 
 @Component({
   selector: 'app-mainpage',
@@ -17,17 +19,33 @@ import { Observable } from 'rxjs';
 export class MainpageComponent implements OnInit {
 
   products: Product[];
+  categories: Category[];
+  catImageURL: string;
+
+  sliderOpts = {
+    zoom: false,
+    slidesPerView: 1.75,
+    spaceBetween: 15,
+  };
 
   constructor(
     private productService: ProductService,
     private userService: UserService,
     private router: Router,
     private cartService: CartService,
-    private cartItemService: CartItemService
+    private cartItemService: CartItemService,
+    private categoryService: CategoryService
     ) {
+      this.catImageURL = catImageURL;
   }
 
   ngOnInit() {
+    this.categoryService.getCategories().subscribe(
+      (categories) => {
+        this.categories = categories;
+        localStorage.setItem('categories', JSON.stringify(categories));
+      }
+    );
     this.productService.getProducts().subscribe(
       (data) => {
         this.productService.setProducts(data);

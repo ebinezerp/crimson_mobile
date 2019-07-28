@@ -1,0 +1,9 @@
+<app-header></app-header>
+<ion-content>
+  <div *ngIf="products">
+    <ion-item-group *ngFor="let product of products">
+      <app-mainpageproduct [product]="product"></app-mainpageproduct>
+    </ion-item-group>
+  </div>
+</ion-content>
+<app-footer></app-footer>

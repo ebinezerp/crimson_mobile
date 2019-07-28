@@ -30,6 +30,9 @@ export class CartService {
   }
 
   updateCart(cart: Cart) {
+    const user = this.userService.getUser();
+    user.cart = this.cart;
+    localStorage.setItem('user', JSON.stringify(user));
     this.cartBehaviourSubject.next(this.cart);
   }
 
@@ -82,7 +85,7 @@ export class CartService {
     this.cart.cartId = 0;
     this.cart.quantity = 0;
     this.cart.totalAmount = 0;
-    this.cartBehaviourSubject.next(this.cart);
+    this.updateCart(this.cart);
   }
 
 
