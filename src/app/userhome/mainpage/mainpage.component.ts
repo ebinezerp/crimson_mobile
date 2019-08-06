@@ -19,7 +19,7 @@ import { Category } from 'src/app/model/category';
 export class MainpageComponent implements OnInit {
 
   products: Product[];
-  categories: Category[];
+  categories: Category[][] = [];
   catImageURL: string;
 
   sliderOpts = {
@@ -42,7 +42,13 @@ export class MainpageComponent implements OnInit {
   ngOnInit() {
     this.categoryService.getCategories().subscribe(
       (categories) => {
-        this.categories = categories;
+        for (let row = 0; row < categories.length;) {
+          let categoryArray = [];
+          for (let col = 1; col < 4 && row < categories.length; col++) {
+            categoryArray.push(categories[row++]);
+          }
+          this.categories.push(categoryArray);
+        }
         localStorage.setItem('categories', JSON.stringify(categories));
       }
     );

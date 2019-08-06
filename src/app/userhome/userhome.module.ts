@@ -19,6 +19,7 @@ import { OrderItemComponent } from './order-item/order-item.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SupportComponent } from './support/support.component';
 import { CategoryProductComponent } from './category-product/category-product.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CategoryProductComponent } from './category-product/category-product.co
     OrderItemComponent,
     ProfileComponent,
     SupportComponent,
-    CategoryProductComponent
+    CategoryProductComponent,
+    EditProfileComponent
   ],
  exports: [
   MainpageComponent,
@@ -53,7 +55,8 @@ import { CategoryProductComponent } from './category-product/category-product.co
   OrderItemComponent,
   ProfileComponent,
   SupportComponent,
-  CategoryProductComponent
+  CategoryProductComponent,
+  EditProfileComponent
   ],
   imports: [
     CommonModule,

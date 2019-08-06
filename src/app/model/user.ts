@@ -1,4 +1,5 @@
 import { Cart } from './cart';
+import { UserDetails } from './user-details';
 
 export class User {
     userId: number;
@@ -9,4 +10,5 @@ export class User {
     role: string = 'ROLE_USER';
     isActive: boolean = true;
     cart: Cart;
+    userDetails: UserDetails;
 }

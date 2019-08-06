@@ -54,6 +54,10 @@ export class UserService {
     return this.httpClient.post<User>(URL + 'register', user);
   }
 
+  updateUser(user: User): Observable<User> {
+    return this.httpClient.post<User>(URL + 'update', user);
+  }
+
   getCartCount(): number {
     const cart: Cart = this.user.cart;
     return cart.quantity;

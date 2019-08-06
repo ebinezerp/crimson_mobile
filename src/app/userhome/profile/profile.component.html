@@ -40,6 +40,65 @@
                 <ion-text color='primary' [routerLink]="['/forget-password']" routerLinkActive="router-link-active" >Change Password</ion-text>
               </ion-col>
             </ion-row>
+            <ion-row class='ion-padding-bottom'>
+              <ion-col>
+                <ion-label>Company Name</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-text>{{user.userDetails.companyName}}</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class='ion-padding-bottom'>
+              <ion-col>
+                <ion-label>Door No</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-text>{{user.userDetails.address.doorNo}}</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class='ion-padding-bottom'>
+              <ion-col>
+                <ion-label>Street</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-text>{{user.userDetails.address.street}}</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class='ion-padding-bottom'>
+              <ion-col>
+                <ion-label>City</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-text>{{user.userDetails.address.city}}</ion-text>
+              </ion-col>
+            </ion-row><ion-row class='ion-padding-bottom'>
+              <ion-col>
+                <ion-label>Country</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-text>{{user.userDetails.address.country}}</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class='ion-padding-bottom'>
+              <ion-col>
+                <ion-label>GST</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-text>{{user.userDetails.gst}}</ion-text>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class='ion-padding-bottom'>
+              <ion-col>
+                <ion-label>Category</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-text>{{user.userDetails.userCategory.categoryName}}</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class='ion-padding-bottom'>
+              <ion-col><ion-button [routerLink]="['/userhome/edit-profile']" routerLinkActive="router-link-active"  shape="round" expand="block">Edit Profile</ion-button></ion-col>
+            </ion-row>
           </ion-grid>
         </ion-card-content>
       </ion-card>

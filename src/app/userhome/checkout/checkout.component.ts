@@ -5,6 +5,10 @@ import { OrderReceiverService } from 'src/app/services/order-receiver.service';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
+import { UserDetails } from 'src/app/model/user-details';
+import { User } from 'src/app/model/user';
+import { Address } from 'src/app/model/address';
+import { UserDetailsService } from 'src/app/services/user-details.service';
 
 @Component({
   selector: 'app-checkout',
@@ -13,34 +17,30 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CheckoutComponent implements OnInit {
 
-  orderReciever: OrderReciever;
+  user: User;
 
   constructor(
-    private orderReceiverService: OrderReceiverService,
     private router: Router,
     private cartService: CartService,
     private userService: UserService,
-    private orderRecieverService: OrderReceiverService) {
-    this.orderReciever = new OrderReciever();
+    private userDetailsService: UserDetailsService) {
+      this.user = new User();
+      this.user.userDetails = new UserDetails();
+      this.user.userDetails.address = new Address();
    }
 
   ngOnInit() {
     const user = this.userService.getUser();
-    this.orderReceiverService.getLastOrderReceiver(user.userId).subscribe(
-      (orderReciever) => {
-        console.log(orderReciever);
-        if (orderReciever != null && orderReciever !== undefined) {
-          this.orderReciever = orderReciever;
-        }
-      }
-    );
+    console.log(user);
+    this.user = user;
+    this.user.userDetails.address.addressId = 0;
   }
 
   submit(orderReceiverForm: NgForm) {
-    this.orderReceiverService.submit(this.orderReciever).subscribe(
+    this.userDetailsService.submit(this.user.userDetails).subscribe(
       (order) => {
-        this.orderReceiverService.orderReceiverObservable.subscribe(
-          (orderReciever) => {
+        this.userDetailsService.userDetailsObservable.subscribe(
+          (userDetails) => {
               this.router.navigate(['/userhome/order', order.orderId]).then(
                 () => orderReceiverForm.reset()
               );

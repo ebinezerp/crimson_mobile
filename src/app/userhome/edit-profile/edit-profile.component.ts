@@ -1,43 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../model/user';
-import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
-import { NgForOf } from '@angular/common';
-import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/model/user';
 import { UserCategory } from 'src/app/model/user-category';
 import { UserCategoryService } from 'src/app/services/user-category.service';
-import { UserDetails } from 'src/app/model/user-details';
-import { Address } from 'src/app/model/address';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
 })
-export class SignupComponent implements OnInit {
+export class EditProfileComponent implements OnInit {
 
   user: User;
-  role = 'ROLE_USER';
   errorMessages = {};
   userCategories: UserCategory[];
 
   constructor(
     private userService: UserService,
-    private router: Router,
-    private userCategoryService: UserCategoryService ) {
+    private userCategoryService: UserCategoryService,
+    private router: Router) {
     this.user = new User();
-    this.user.userDetails = new UserDetails();
-    this.user.userDetails.address = new Address();
-    this.user.userDetails.userCategory = new UserCategory();
   }
 
   ngOnInit() {
+    this.user = this.userService.getUser();
     this.userCategoryService.getUserCategories().subscribe(
       (categories) => {
         this.userCategories = categories;
       }
     );
   }
+
 
   submit(ngForm: NgForm) {
     console.log(this.user);
@@ -46,11 +41,14 @@ export class SignupComponent implements OnInit {
         return true;
       }
     }));
-    
-    this.userService.addUser(this.user).subscribe(
+
+    console.log(this.user);
+
+    this.userService.updateUser(this.user).subscribe(
       (data) => {
-        ngForm.reset();
-        this.router.navigate(['/']);
+        this.user = data;
+        this.userService.setUser(data);
+        this.router.navigate(['/userhome/profile']);
       },
       (error) => {
         console.log(error.error);

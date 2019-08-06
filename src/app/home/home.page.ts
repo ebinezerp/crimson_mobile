@@ -53,6 +53,9 @@ export class HomePage implements OnInit {
     this.userService.login(this.email, this.password).subscribe(
       (data) => {
         console.log(data);
+        console.log('');
+        console.log(data);
+        console.log('');
         this.userService.setUser(data);
         this.router.navigate(['userhome/main']);
       },

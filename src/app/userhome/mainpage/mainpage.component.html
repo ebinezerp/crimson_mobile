@@ -10,29 +10,31 @@
       </ion-label>
     </ion-col>
   </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-item-group>
-        <ion-slides [options]='sliderOpts'>
-          <ion-slide *ngFor="let category of categories">
-            <ion-card class='cat-ion-card col-12' [routerLink]="['/userhome/category/prod', category.categoryId]" >
-              <ion-card-content>
-                <ion-img src='{{catImageURL + category.categoryId}}.jpg'></ion-img>
-                <ion-text class='ion-padding-top ion-margin-top text-center font-weight-bold text-uppercase'>{{category.categoryName}}</ion-text>
-              </ion-card-content>
-            </ion-card>
-          </ion-slide>
-        </ion-slides>
-      </ion-item-group>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-      <ion-col class='col-12'>
-        <ion-label class='ion-padding'>
-          <ion-text class='heading ion-padding'>Products</ion-text>
-        </ion-label>
+
+    <ion-row *ngFor="let categoryArray of categories; let rowIndex=index">
+      <ion-col>
+        <ion-item-group>
+          <ion-slides [options]='sliderOpts'>
+            <ion-slide *ngFor="let category of categoryArray">
+              <ion-card class='cat-ion-card col-12' [routerLink]="['/userhome/category/prod', category.categoryId]">
+                <ion-card-content>
+                  <ion-img src='{{catImageURL + category.categoryId}}.jpg'></ion-img>
+                  <ion-text class='ion-padding-top ion-margin-top text-center font-weight-bold text-uppercase'>
+                    {{category.categoryName}}</ion-text>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </ion-item-group>
       </ion-col>
     </ion-row>
+  <ion-row>
+    <ion-col class='col-12'>
+      <ion-label class='ion-padding'>
+        <ion-text class='heading ion-padding'>Products</ion-text>
+      </ion-label>
+    </ion-col>
+  </ion-row>
   <div *ngIf="products" class='mt-3'>
     <ion-item-group *ngFor="let product of products">
       <app-mainpageproduct [product]="product"></app-mainpageproduct>
