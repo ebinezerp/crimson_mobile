@@ -90,6 +90,10 @@
                 Enter PIN Code
               </span>
             </span>
+            <ion-item class='border border-rounded ion-margin-bottom'>
+             <ion-radio name="delivery" value='true'checked></ion-radio>
+             <ion-label>Cash on Delivery</ion-label>
+            </ion-item>
             <div class='d-flex justify-content-center'>
             <ion-button [disabled]='!userDetailsForm.valid' type='submit' shape='round' class='text-center'>
               Order

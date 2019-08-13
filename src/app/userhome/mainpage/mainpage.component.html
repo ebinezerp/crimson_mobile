@@ -1,17 +1,16 @@
 <app-header></app-header>
-<ion-item class='banner'>
-  <ion-img class='banner-img' src='assets/images/banner.png'></ion-img>
-</ion-item>
+
 <ion-content>
-  <ion-row class='ion-margin-top'>
-    <ion-col class='col-12'>
-      <ion-label class='ion-padding'>
-        <ion-text class='heading ion-padding'>Categories</ion-text>
-      </ion-label>
+  <ion-item class='banner ion-margin-top'>
+    <ion-img class='banner-img' src='assets/images/banner.png'></ion-img>
+  </ion-item>
+  <ion-row class='ion-margin-top d-flex justify-content-center'>
+    <ion-col class='col ion-text-center'>
+        <ion-text class='heading ion-padding'>Shop by Category</ion-text>
     </ion-col>
   </ion-row>
 
-    <ion-row *ngFor="let categoryArray of categories; let rowIndex=index">
+  <!-- <ion-row *ngFor="let categoryArray of categories; let rowIndex=index">
       <ion-col>
         <ion-item-group>
           <ion-slides [options]='sliderOpts'>
@@ -27,12 +26,28 @@
           </ion-slides>
         </ion-item-group>
       </ion-col>
-    </ion-row>
-  <ion-row>
-    <ion-col class='col-12'>
-      <ion-label class='ion-padding'>
+    </ion-row> -->
+
+
+  <ion-row class='ion-padding'>
+    <ion-col class='col-4 border border-dark ion-text-center' *ngFor='let category of categories' [routerLink]="['/userhome/category/prod', category.categoryId]">
+      <ion-img src='{{catImageURL + category.categoryId}}.jpg'></ion-img>
+      <ion-text class='category-name ion-padding-top ion-margin-top text-uppercase'>
+        {{category.categoryName}}</ion-text>
+    </ion-col>
+  </ion-row>
+
+
+
+
+  <ion-item class='banner ion-margin-top ion-margin-bottom' [routerLink]="['/userhome/profile']"
+    routerLinkActive="router-link-active">
+    <ion-img class='banner-img' src='assets/images/banner1.png'></ion-img>
+  </ion-item>
+
+  <ion-row class='d-flex flex-row justify-content-center'>
+    <ion-col class='col-12 ion-text-center'>
         <ion-text class='heading ion-padding'>Products</ion-text>
-      </ion-label>
     </ion-col>
   </ion-row>
   <div *ngIf="products" class='mt-3'>

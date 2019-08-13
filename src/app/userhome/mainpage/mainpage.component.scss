@@ -40,5 +40,15 @@ ion-slide > ion-item {
 }
 
 ion-text.heading{
-     font-size: xx-large;
+     font-size: x-large;
+     padding:10px;
+}
+
+ion-card.col-12{
+     padding-right:0;
+     padding-left:0;
+}
+
+ion-text.category-name{
+     font-size: small;
 }
